@@ -357,8 +357,10 @@ where
 {
     let mut walk = walk.peekable();
     Box::new(move |index, entry_pos| {
-        while walk.next_if(index, |&pos| pos > entry_pos).is_some() {
-            continue;
+        loop {
+            if walk.next_if(index, |&pos| pos > entry_pos).is_none() {
+                break;
+            }
         }
         Ok(walk.next_if(index, |&pos| pos == entry_pos).is_some())
     })

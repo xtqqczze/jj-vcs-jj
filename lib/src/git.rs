@@ -1283,7 +1283,6 @@ fn collect_changed_refs_to_export(
             to_update.push((symbol.to_owned(), (old_oid, new_oid)));
         } else if new_target.has_conflict() {
             // Skip conflicts and leave the old value in git_refs
-            continue;
         } else {
             assert!(new_target.is_absent());
             to_delete.push((symbol.to_owned(), old_oid.unwrap()));

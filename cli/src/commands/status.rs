@@ -249,8 +249,6 @@ async fn visit_collapsed_untracked_files(
             .is_some_and(|p| path.starts_with(p))
         {
             continue;
-        } else {
-            skip_prefixed_by_dir = None;
         }
 
         let mut it = path.components().dropping_back(1);

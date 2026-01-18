@@ -103,8 +103,10 @@ impl<P: Ord, T: Ord> RevWalkQueue<P, T> {
     }
 
     pub fn skip_while_eq(&mut self, pos: &P) {
-        while self.pop_eq(pos).is_some() {
-            continue;
+        loop {
+            if self.pop_eq(pos).is_none() {
+                break;
+            }
         }
     }
 }
